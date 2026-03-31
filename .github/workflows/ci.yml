@@ -29,7 +29,7 @@ jobs:
       - name: Install shfmt
         run: go install mvdan.cc/sh/v3/cmd/shfmt@latest
       - name: Run shfmt
-        run: shfmt -d *.sh
+        run: $(go env GOPATH)/bin/shfmt -d *.sh
 
   markdownlint:
     name: Markdown Lint
