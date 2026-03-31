@@ -1,0 +1,19 @@
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Lefthook local overrides (personal, not committed)
+lefthook-local.yml
+
+# Environment
+.env
+.env.*
+
+# Node
+node_modules/

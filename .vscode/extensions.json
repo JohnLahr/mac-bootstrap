@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "anthropic.claude-code",
+    "DavidAnson.vscode-markdownlint",
+    "timonwong.shellcheck",
+    "mkhl.shfmt",
+    "eamodio.gitlens",
+    "vivaxy.vscode-conventional-commits"
+  ]
+}
