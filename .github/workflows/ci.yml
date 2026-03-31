@@ -24,12 +24,10 @@ jobs:
   shfmt:
     name: shfmt
     runs-on: ubuntu-latest
-    container:
-      image: mvdan/shfmt:latest
     steps:
       - uses: actions/checkout@v4
       - name: Run shfmt
-        run: shfmt -d *.sh
+        run: docker run --rm -v "$PWD":/src -w /src mvdan/shfmt:latest -d *.sh
 
   markdownlint:
     name: Markdown Lint
