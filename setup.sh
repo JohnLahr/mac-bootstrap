@@ -438,7 +438,7 @@ VSCODE_EXTENSIONS=(
 	mkhl.shfmt                         # Shell script formatter
 	eamodio.gitlens                    # Git supercharged
 	vivaxy.vscode-conventional-commits # Guided conventional commit UI
-	zhuangtongfa.Material-theme        # One Dark Pro theme
+	zhuangtongfa.material-theme        # One Dark Pro theme
 )
 
 for ext in "${VSCODE_EXTENSIONS[@]}"; do
