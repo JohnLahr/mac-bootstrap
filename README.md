@@ -8,7 +8,7 @@ extensions/settings, project templates, and headless macOS optimisations.
 ## Quick Start
 
 ```bash
-git clone https://github.com/stevesimpson418/mac-bootstrap.git
+git clone https://github.com/johnlahr/mac-bootstrap.git
 cd mac-bootstrap
 ```
 
@@ -31,7 +31,7 @@ The script is idempotent — safe to re-run if something fails halfway through.
 | Python          | uv, ruff                                                           |
 | Node.js         | nvm, Node LTS                                                      |
 | Linting         | shellcheck, shfmt, markdownlint-cli2                               |
-| Desktop apps    | Chrome, 1Password, iTerm2, VS Code, Claude Desktop, BetterDisplay  |
+| Desktop apps    | Brave, Rectangle, iTerm2, VS Code, Claude Desktop, BetterDisplay   |
 | IDE             | VS Code extensions + global settings                               |
 | Templates       | Generic and Python project scaffolding via `newproject` command    |
 
