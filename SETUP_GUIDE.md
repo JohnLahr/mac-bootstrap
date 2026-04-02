@@ -126,7 +126,7 @@ Fix this with one of these options:
 This phase is fully handled by `setup.sh`. See the [README](README.md) for usage.
 
 The script installs: Homebrew, Node.js (via nvm), CLI tools (git, gh, tmux, shellcheck,
-shfmt, lefthook, commitlint, uv, ruff, etc.), desktop apps (Chrome, 1Password, iTerm2,
+shfmt, lefthook, commitlint, uv, ruff, etc.), desktop apps (Brave, Rectangle, iTerm2,
 VS Code, Claude Desktop, BetterDisplay), Oh My Zsh with plugins, VS Code extensions and
 settings, project templates, and headless macOS optimisations.
 
@@ -161,6 +161,12 @@ System Settings > Network > Firewall:
 
 - [ ] **Firewall** > On
 - [ ] Click **Options**: ensure Screen Sharing and Remote Login are allowed through
+
+### Accessibility Permissions
+
+System Settings > Privacy & Security > Accessibility:
+
+- [ ] Add **Rectangle** (required for window management shortcuts)
 
 ### Full Disk Access
 

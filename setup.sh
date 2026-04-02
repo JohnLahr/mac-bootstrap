@@ -167,11 +167,12 @@ log_header "Desktop Apps (Homebrew Casks)"
 
 CASKS=(
 	# User apps
-	google-chrome
-	1password
-	1password-cli
+	brave-browser
 	notion
 	todoist
+
+	# Window management
+	rectangle
 
 	# Terminal
 	iterm2
@@ -289,7 +290,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # gh:                     GitHub CLI completions
 # tmux:                   tmux session management aliases
 # vscode:                 VS Code launcher aliases
-# 1password:              1Password CLI completions
 # zsh-autosuggestions:    history-based command suggestions (custom plugin)
 # zsh-syntax-highlighting: colours commands as you type (custom plugin)
 plugins=(
@@ -297,7 +297,6 @@ plugins=(
     gh
     tmux
     vscode
-    1password
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -439,6 +438,7 @@ VSCODE_EXTENSIONS=(
 	mkhl.shfmt                         # Shell script formatter
 	eamodio.gitlens                    # Git supercharged
 	vivaxy.vscode-conventional-commits # Guided conventional commit UI
+	zhuangtongfa.material-theme        # One Dark Pro theme
 )
 
 for ext in "${VSCODE_EXTENSIONS[@]}"; do
@@ -482,13 +482,13 @@ cat >"$VSCODE_SETTINGS_DIR/settings.json" <<'VSCODE_SETTINGS'
   "editor.detectIndentation": false,
 
   // Whitespace and formatting
-  "editor.renderWhitespace": "trailing",
+  "editor.renderWhitespace": "all",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
 
-  // Line length guide (88 = ruff/black default, 120 = readable on wide screens)
-  "editor.rulers": [88, 120],
+  // Line length guide (80 = traditional, 120 = readable on wide screens)
+  "editor.rulers": [80, 120],
 
   // Word wrap off for code (use rulers as visual guide instead)
   "editor.wordWrap": "off",
@@ -642,6 +642,7 @@ cat >"$VSCODE_SETTINGS_DIR/settings.json" <<'VSCODE_SETTINGS'
   // EXPLORER and WORKBENCH
   // ==========================================================================
 
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "none",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "left",
@@ -1067,6 +1068,24 @@ log_success "Unlimited scrollback enabled"
 # On first Screen Sharing session, open iTerm2 manually to finalise setup.
 log_info "Open iTerm2 once via Screen Sharing to finalise default terminal registration"
 
+# -- Rectangle Configuration ---------------------------------------------------
+log_header "Rectangle Configuration"
+
+# Launch at login and skip first-launch dialog
+defaults write com.knollsoft.Rectangle launchOnLogin -bool true
+defaults write com.knollsoft.Rectangle SUHasLaunchedBefore -bool true
+log_success "Rectangle: launch at login enabled"
+
+# Custom shortcuts: Cmd+Arrow for window halves/maximize
+# Note: this overrides macOS text navigation (Home/End) in text fields
+defaults write com.knollsoft.Rectangle leftHalf -dict keyCode -int 123 modifierFlags -int 1048576
+defaults write com.knollsoft.Rectangle rightHalf -dict keyCode -int 124 modifierFlags -int 1048576
+defaults write com.knollsoft.Rectangle maximize -dict keyCode -int 126 modifierFlags -int 1048576
+defaults write com.knollsoft.Rectangle bottomHalf -dict keyCode -int 125 modifierFlags -int 1048576
+log_success "Rectangle: Cmd+Arrow shortcuts configured"
+log_warn "Cmd+Arrow overrides macOS text navigation (Home/End) in text fields"
+log_info "Rectangle requires Accessibility permissions — grant via System Settings on first launch"
+
 # -- macOS Defaults (headless server optimisations) ----------------------------
 log_header "macOS Defaults (Headless Optimisations)"
 
@@ -1112,8 +1131,9 @@ echo -e "  4. Run ${BOLD}ta${NC} to start a tmux session named 'main'"
 echo -e "  5. Open Claude Desktop and sign in with your Anthropic account"
 echo -e "  6. Run ${BOLD}claude${NC} in terminal to authenticate Claude Code"
 echo -e "  7. Open VS Code and sign in to the Claude Code extension"
-echo -e "  8. Sign in to 1Password, Chrome, Notion, and Todoist"
-echo -e "  9. Configure BetterDisplay for your preferred virtual display resolution"
+echo -e "  8. Sign in to Brave, Notion, and Todoist"
+echo -e "  9. Grant Accessibility permissions to Rectangle (System Settings → Privacy & Security → Accessibility)"
+echo -e " 10. Configure BetterDisplay for your preferred virtual display resolution"
 echo -e ""
 echo -e "Useful commands:"
 echo -e "  ${BOLD}ta${NC}              — attach to tmux session 'main' (or create it)"
